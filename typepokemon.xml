@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Hôte : 127.0.0.1:3306
-- Généré le :  mer. 13 mars 2019 à 15:27
+- Généré le :  mer. 20 mars 2019 à 13:24
 - Version du serveur :  5.7.24
 - Version de PHP :  7.2.14
 -->
@@ -15,7 +15,7 @@
     - Structure schemas
     -->
     <pma:structure_schemas>
-        <pma:database name="ppokemon" collation="utf8_general_ci" charset="utf8">
+        <pma:database name="mikembo" collation="utf8_general_ci" charset="utf8">
             <pma:table name="typepokemon">
                 CREATE TABLE `typepokemon` (
                   `Num_Type` int(20) NOT NULL AUTO_INCREMENT,
@@ -27,9 +27,9 @@
     </pma:structure_schemas>
 
     <!--
-    - Base de données :  'ppokemon'
+    - Base de données :  'mikembo'
     -->
-    <database name="ppokemon">
+    <database name="mikembo">
         <!-- Table typepokemon -->
         <table name="typepokemon">
             <column name="Num_Type">1</column>
