@@ -1,0 +1,19 @@
+#main{
+  position: absolute;
+  border: 1px solid black;
+}
+
+#main > table{
+  float:right;
+  margin:50px;
+}
+table{
+  border-radius: 50px;
+}
+#pokemon{
+
+}
+#type{
+
+
+}
