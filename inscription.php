@@ -1,6 +1,6 @@
 <?php
 
-$link = mysqli_connect("dwarves.iut-fbleau.fr","/*login*/","/*Mdp*/","BasedeDonnées*/");
+$link = mysqli_connect("dwarves.iut-fbleau.fr","/*login*/","/*Mdp*/","/*BasedeDonnées*/");
 
 if (isset($_POST['valider']))
 {
