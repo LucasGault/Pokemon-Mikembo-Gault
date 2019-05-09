@@ -1,0 +1,220 @@
+*{margin:0;padding:0;}
+html ,body{height: 100%;}
+
+body{
+  position: absolute;
+  background-repeat:no-repeat;
+  background-image: url("../Images/Fond/boutique.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 90%;
+  height: 90%;
+}
+
+#achat{
+  width: 35%;
+  position: absolute;
+  top: 50%; left: 10%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+}
+
+#argent{
+	margin-left: 3%;
+	position: absolute;
+	top: 5%; left: 4.7%;
+	transform: translate(-50%, -50%);
+}
+
+#argent > p{
+	color: rgb(204, 20, 20);
+	font-size: 1.1em;
+	font-weight: bold;
+}
+#acheter{
+  position: relative;
+  width: 100px;
+  height: 80px;
+  background-color: rgba(204, 20, 20, 0.95);
+  border-radius: 10px;
+  border: 3px solid rgb(50, 154, 230);
+  font-size: 1.1em;
+}
+#acheter:hover{
+  background-color: rgba(204, 20, 20, 0.80);
+}
+
+#liste{
+  width: 45%;
+  height: 80%;
+  position: absolute;
+  top: 50%; left: 54%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.80);
+  border-radius: 10px;
+  border: 3px solid rgb(50, 154, 230);
+  visibility: hidden;
+}
+
+#header{
+  width: 100%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom:3px solid rgb(50, 154, 230);
+  background-color: rgba(204, 20, 20, 0.95);
+}
+
+
+#ball{
+  width: 30%;
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1.3em;
+  border-right:2px solid rgb(50, 154, 230);
+}
+#pvpp{
+  width: 30%;
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1.3em;
+  border-right:2px solid rgb(50, 154, 230);
+}
+#evo{
+  width: 30%;
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1.3em;
+  border-right:2px solid rgb(50, 154, 230);
+}
+#croix{
+  width: 6%;
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1.3em;
+}
+#header > div > p {
+  text-align: center;
+}
+
+#vendre{
+  height: 25%;
+  border-bottom: 2px solid rgb(50, 154, 230);
+}
+.ball{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  visibility: hidden;
+  overflow: auto;
+  max-width: 100%;
+  max-height: 89%;
+}
+.pvpp{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  visibility: hidden;
+  overflow: auto;
+  max-width: 100%;
+  max-height: 89%;
+}
+.evo{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  visibility: hidden;
+  overflow: auto;
+  max-width: 100%;
+  max-height: 89%;
+}
+
+#nomObj{
+  position: absolute;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1em;
+  padding-top: 5%;
+  left: 15%;
+  color: rgba(204, 20, 20);
+}
+#body > div > div > img {
+  display: inline-block;
+  padding-left: 3%;
+  padding-top: 3.5%;
+  width: 7.5%;
+
+}
+#prix{
+  position: absolute;
+  display: inline-block;
+  left: 37%;
+  padding-top: 5%;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: rgb(50, 154, 230);
+}
+.desc{
+  margin-top: 2.5%;
+  position: absolute;
+  display: inline-block;
+  width: 45%;
+  height: 20%;
+  overflow: auto;
+  left: 50%;
+}
+.achat{
+  margin-top: 14%;
+  position: absolute;
+  display: inline-block;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+#input-achat{
+  padding: 4px;
+  border: 1px solid rgb(50, 154, 230);
+	border-radius: 20px;
+  width: 40%;
+}
+input[type=submit]{
+  height: 10%;
+  padding: 3px;
+  background-color: rgba(204, 20, 20, 0.95);
+  border-radius: 10px;
+  border: 2px solid rgb(50, 154, 230);
+}
+input[type=submit]:hover{background-color: rgba(204, 20, 20, 0.80);}
+
+#return{
+  width: 35%;
+  position: absolute;
+  top: 106%; left: 90%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+#retour{
+  position: relative;
+  width: 100px;
+  height: 40px;
+  background-color: rgba(204, 20, 20, 0.95);
+  border-radius: 10px;
+  border: 3px solid rgb(50, 154, 230);
+  font-size: 1.1em;
+}
+#retour:hover{background-color: rgba(204, 20, 20, 0.80);}
+
+a{
+	position: absolute;
+	top: 105%; left: 7%;
+	transform: translate(-50%, -50%);
+	background-color: rgb(204, 20, 20);
+	border-radius: 10px;
+	border: 3px solid rgb(50, 154, 230);
+	padding: 0.7%;
+	color: black;
+}
