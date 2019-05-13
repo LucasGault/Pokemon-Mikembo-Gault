@@ -67,7 +67,15 @@ function dommage($id_membre, $num_pokemon, $num_attaque, $link)
 
 	mysqli_query($link, $reqpuissance);
 }
-
+$pokerand = rand(1,151);
+$niveaurand = rand(5,10);
+function pokemonsauvage($link,$pokerand,$niveaurand,$id_membre){
+	$sauvage = 'INSERT INTO pokemonsauvage(Id_Pokemon,Num_Attaque1,Num_Attaque2,Num_Attaque3,Num_Attaque4,Niveau,Id_membre)
+	VALUES(' . $pokerand . ',1,2,3,4,' . $niveaurand . ','.$id_membre.')';
+	$reqsauvage = mysqli_query($link, $sauvage);
+	$sauvpv = 'UPDATE pokemonsauvage JOIN pokemon ON pokemonsauvage.Id_Pokemon = pokemon.Numero SET pokemonsauvage.PV_restant = pokemon.PV';
+	$reqpv = mysqli_query($link, $sauvpv);
+}
 // fonction pour attraper le pokemon choisi
 function attraper($id_membre, $link)
 {
@@ -77,18 +85,19 @@ function attraper($id_membre, $link)
 	$reqlvl = 'SELECT AVG(Niveau) FROM equipe WHERE id_membre = ' . $id_membre;
 	$lvl = mysqli_query($link, $reqlvl);
 
-	$reqins1 = 'INSERT INTO equipe(id_membre,Numero,Num_Attaque1,Num_Attaque2,Num_Attaque3,Num_Attaque4,Niveau)
-	VALUES(' . $id_membre . ',' . rand(1,151) . ',1,2,3,4,' . rand(5,10) . ')';
-	$reqins2 = 'INSERT INTO pc(id_membre,Numero,Num_Attaque1,Num_Attaque2,Num_Attaque3,Num_Attaque4,Niveau)
-	VALUES(' . $id_membre . ',' . rand(1,151) . ',1,2,3,4,' . rand(5,10) . ')';
+	// $reqins1 = 'INSERT INTO equipe(id_membre,Numero,Num_Attaque1,Num_Attaque2,Num_Attaque3,Num_Attaque4,Niveau)
+	// VALUES(' . $id_membre . ',' . $pokerand . ',1,2,3,4,' . $niveaurand . ')';
+	$reqpokemon = 'SELECT Id_membre, Id_Pokemon, Num_Attaque1, Num_Attaque2, Num_Attaque3, Num_Attaque4, Niveau, PV_restant FROM pokemonsauvage ';
+	$reqajout = 'INSERT INTO pc(id_membre, Numero, Num_Attaque1, Num_Attaque2, Num_Attaque3, Num_Attaque4, Niveau, PV_restant)'. $reqpokemon;
+	$reqsupprimer = 'TRUNCATE TABLE pokemonsauvage';
 
 	$nb = mysqli_num_rows($reqexe1);
 	if($nb < 5){
-		$ins3 = mysqli_query($link, $reqins1);
+		// $ins3 = mysqli_query($link, $reqins1);
 	}else{
-		$ins3 = mysqli_query($link, $reqins2);
+		mysqli_query($link, $reqajout);
+		mysqli_query($link, $reqsupprimer);
 	}
-
 }
 
 // place vers le premier
