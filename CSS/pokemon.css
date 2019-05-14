@@ -1,0 +1,28 @@
+#main{
+  position: absolute;
+  border: 1px solid black;
+}
+#main > table{
+  float:left;
+  margin: 20px;
+}
+table{
+  border-radius: 25px;
+  border-collapse: collapse;
+}
+table , th , td {
+  border: 1px solid grey;
+}
+#pokemon{
+  width: 40%;
+}
+#type{
+
+}
+#attaque{
+  width: 50%;
+}
+
+#objets{
+  width: 50%;
+}
