@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-$link = mysqli_connect("dwarves.iut-fbleau.fr","mikembo","mikembo","mikembo");
-
 include './PHP/security.php';
 include './PHP/users.php';
 include './PHP/pokemons.php';
+
+$link = linkBdd();
 
 verification($_SESSION['id']);
 $userinfo = infoUsers($_SESSION['id'], $link);
