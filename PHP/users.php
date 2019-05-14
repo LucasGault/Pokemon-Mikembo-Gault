@@ -1,10 +1,10 @@
 <?php
 
+
 // fonction pour la connexion à la base de donnée
 function linkBdd()
 {
 	$link = mysqli_connect("dwarves.iut-fbleau.fr","mikembo","mikembo","mikembo");
-
 	return $link;
 }
 
@@ -71,8 +71,10 @@ function soin($id_membre, $num_pokemon, $num_objet, $link)
 
 function recompense($id_membre,$link)
 {
-	$argent = mysqli_query($link, 'UPDATE membres SET Argent = Argent + 50 WHERE id_membre = ' . $id_membre);
-	$ball = mysqli_query($link, 'UPDATE objets_joueur SET Qtte = Qtte + 5 WHERE id_Objet = 28 AND id_membre = ' . $id_membre);
+	$reqargent = 'UPDATE membres SET Argent = Argent + 50 WHERE id_membre = ' . $id_membre;
+	$reqball = 'UPDATE objets_joueur SET Qtte = Qtte + 5 WHERE id_Objet = 28 AND id_membre = ' . $id_membre;
+	mysqli_query($link, $reqargent);
+	mysqli_query($link, $reqball);
 }
 
 

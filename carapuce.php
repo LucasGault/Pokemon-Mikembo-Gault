@@ -3,17 +3,16 @@ session_start();
 
 include './PHP/security.php';
 include './PHP/users.php';
-
 $link = linkBdd();
-
 verification($_SESSION['id']);
 
 $insert = 'INSERT INTO equipe(id_membre,Numero,Num_Attaque1,Num_Attaque2,Num_Attaque3,Num_Attaque4,Niveau)
 VALUES('.$_SESSION['id'].',7,85,62,NULL,NULL,5)';
 $reqinsert = mysqli_query($link,$insert);
+$requpd = 'UPDATE equipe JOIN pokemon ON equipe.Numero = pokemon.Numero SET equipe.PV_restant = pokemon.PV WHERE id_membre = ' . $_SESSION['id'];
+$upd = mysqli_query($link, $requpd);
 
 $initobj = mysqli_query($link,'SELECT Init_Objet FROM membres WHERE id = '. $_SESSION['id']);
-
 foreach ($initobj as $enr ) {
 	if ($enr['Init_Objet'] == '0' ){
 		mysqli_query($link,'INSERT INTO objets_joueur(id_membre,id_Objet,Qtte) VALUES ('.$_SESSION['id'].',1,0)');

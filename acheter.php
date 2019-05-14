@@ -18,8 +18,6 @@ if (isset($_SESSION['id']) && isset($_GET['qtte']) && isset($_GET['num'])){
 
   }
   $prixtotal = $_GET['qtte']*$prixobj;
-  // echo $prixtotal."      ";
-  // echo $_GET['num'];
   $prix = 'UPDATE membres SET Argent = Argent - '.$prixtotal.' WHERE id =' . $_SESSION['id'].';';
   echo $prix;
   $reqprix = mysqli_query($link, $prix);

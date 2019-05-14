@@ -3,7 +3,6 @@ session_start();
 
 include './PHP/users.php';
 include './PHP/pokemons.php';
-
 $link = linkBdd();
 
 if (isset($_POST['validerconnexion']))
@@ -70,7 +69,7 @@ if (isset($_POST['validerconnexion']))
 	<meta charset="utf-8">
 </head>
 <body >
-  
+
 	<div id="body">
 		<div id="div1">
 			<h2>Connexion</h2>

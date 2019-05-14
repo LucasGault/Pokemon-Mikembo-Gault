@@ -29,8 +29,7 @@ $att4 = mysqli_query($link,'SELECT * FROM equipe INNER JOIN attaque INNER JOIN t
 
 $sacball = mysqli_query($link,"SELECT * FROM objets_joueur INNER JOIN objets WHERE id_Objet = Num_Objet AND Utilisable_En_Combat = 'oui' AND Num_TypeObjet = 1 AND Qtte != 0 AND id_membre = ".$_SESSION['id']);
 $sacpvpp = mysqli_query($link,"SELECT * FROM objets_joueur INNER JOIN objets WHERE id_Objet = Num_Objet AND Utilisable_En_Combat = 'oui' AND Num_TypeObjet = 2 AND Qtte != 0 AND id_membre = ".$_SESSION['id']);
-
-$equipe = mysqli_query($link,'SELECT * FROM equipe INNER JOIN pokemon	WHERE equipe.Numero = pokemon.Numero AND id_membre = '. $_SESSION['id']);
+$equipe = mysqli_query($link,'SELECT * FROM equipe INNER JOIN pokemon	WHERE equipe.Numero = pokemon.Numero AND id_membre = '. $_SESSION['id'].' ORDER BY Place_Equipe ASC');
 
 ?>
 <!DOCTYPE html>
@@ -82,7 +81,9 @@ $equipe = mysqli_query($link,'SELECT * FROM equipe INNER JOIN pokemon	WHERE equi
 			<button id="butattaque" type="button" name="button">Attaque</button>
 			<button id="butsac" type="button" name="button">Sac</button>
 			<button id="butpokemon" type="button" name="button">Pokémon</button>
-			<button id="butfuite" type="button" name="button">Fuite</button>
+			<?php
+			echo "<button id='butfuite' type='button' name='button' onclick='suppr_poke_sauvage();'>Fuite</button>";
+			?>
 		</div>
 		<div id="attaque">
 			<?php
@@ -183,8 +184,10 @@ $equipe = mysqli_query($link,'SELECT * FROM equipe INNER JOIN pokemon	WHERE equi
 		<div id="pokemon">
 			<?php
 			$i2 = 1;
+
 			while($ligne = mysqli_fetch_assoc($equipe)){
-				echo "<div id='equipe' class='equipe".$i2."'>";
+				$numpokemoneq = $ligne['Id_equipe'];
+				echo "<div id='equipe' class='equipe".$i2."' onclick='changer_de_pokemon($numpokemoneq);'>";
 				echo $ligne['Miniature'];
 				echo "<p id=nom>".$ligne['Nom']."</p>";
 				echo "<p id=level>N. ".$ligne['Niveau']."</p>";

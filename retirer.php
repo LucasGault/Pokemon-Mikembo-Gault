@@ -22,9 +22,4 @@ if($nb < 6)
 }
 
 
-// header("Location: equipe.php");
-
-
-
-
 ?>

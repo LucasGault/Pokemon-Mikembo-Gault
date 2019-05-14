@@ -2,7 +2,6 @@
 
 include './PHP/security.php';
 include './PHP/users.php';
-
 $link = linkBdd();
 
 $date = date("Y-m-d");
@@ -28,7 +27,7 @@ if (isset($_POST['valider']))
 				if (!$pseudoexist)
 				{
 					$emailexist = emailExist($email, $link);
-					
+
 					if (!$emailexist)
 					{
 						if ($mdp1 == $mdp2)
@@ -98,7 +97,7 @@ if (isset($_POST['valider']))
 				if (isset($erreur))
 					echo '<font>' . $erreur . '</font>';
 			?>
-		</div> 
+		</div>
 	</div>
 </body>
 </html>

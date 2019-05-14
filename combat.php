@@ -5,10 +5,9 @@ include './PHP/security.php';
 include './PHP/users.php';
 include './PHP/pokemons.php';
 
-$link = linkBdd();
+$link = mysqli_connect("dwarves.iut-fbleau.fr","mikembo","mikembo","mikembo");
 
 verification($_SESSION['id']);
-
 $userinfo = infoUsers($_SESSION['id'], $link);
 
 ?>

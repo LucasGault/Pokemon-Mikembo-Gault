@@ -51,9 +51,15 @@ document.querySelector("#evo").addEventListener("click", () => {
 );
 var vendresoins = document.querySelectorAll("#vendresoins");
 var i;
+var j = true;
 for (i = 0; i < vendresoins.length; i++) {
   vendresoins[i].addEventListener("click", () => {
+    if (j) {
       document.querySelector("#equipepoke").style.visibility = "visible";
+    }else {
+      document.querySelector("#equipepoke").style.visibility = "hidden";
+    }
+    j = !j;
   }
   );
 }

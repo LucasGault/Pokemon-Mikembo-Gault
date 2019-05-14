@@ -35,8 +35,8 @@ $equipe1 = mysqli_query($link,'SELECT * FROM equipe INNER JOIN pokemon	WHERE equ
 			echo "<p id=nom>".$ligne['Nom']."</p>";
 			echo "<p id=level>N. ".$ligne['Niveau']."</p>";
 			echo "<p id=pv>".$ligne['PV_restant']."/".$ligne['PV']."</p>";
-			echo "<input type='button' id='haut' value='&#9650;' onclick='deplacerH($numteam)'>";
-			echo "<input type='button' id='bas' value='&#9660;' onclick='deplacerB($numteam)'>";
+			echo "<input type='button' id='haut' value='&#9650;' onclick='deplacerH($numteam);'>";
+			echo "<input type='button' id='bas' value='&#9660;' onclick='deplacerB($numteam);'>";
 			echo "</div>";
 		}
 		?>
@@ -62,7 +62,7 @@ $equipe1 = mysqli_query($link,'SELECT * FROM equipe INNER JOIN pokemon	WHERE equ
 					$numpc1 = $ligne['Id_PC'];
 					// echo "<div id='mover'>";
 					echo $ligne['Miniature'];
-					echo "<input type='submit' id='input-retirer' value='Retirer' onclick='requeteRe($numpc1)'>";
+					echo "<input type='submit' id='input-retirer' value='Retirer' onclick='requeteRe($numpc1);'>";
 					// echo "</div>";
 				}
 				?>
@@ -75,7 +75,7 @@ $equipe1 = mysqli_query($link,'SELECT * FROM equipe INNER JOIN pokemon	WHERE equ
 					$numequipe1 = $ligne['Id_equipe'];
 					// echo "<div id='moves'>";
 					echo '<p id="movenom">' . $ligne['Nom'] . '</p>';
-					echo "<input type='submit' id='input-stocker' value='Stocker' onclick='requeteSt($numequipe1)'>";
+					echo "<input type='submit' id='input-stocker' value='Stocker' onclick='requeteSt($numequipe1);'>";
 					// echo "</div>";
 				}
 				?>

@@ -1,10 +1,10 @@
 <?php
 session_start();
 
+
 include './PHP/security.php';
 include './PHP/users.php';
-
-$link = linkBdd();
+$link = linkBdd();;
 
 verification($_SESSION['id']);
 

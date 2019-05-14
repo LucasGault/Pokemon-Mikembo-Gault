@@ -29,6 +29,11 @@ function utilisation_Objet(num_Objet) {
   xhr.addEventListener('readystatechange', function() {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       actualiser_ball_qtte();
+      var capture = xhr.response;
+      if (capture == 1){
+        alert("Pokemon capturé !");
+        location.href = "profil.php";
+      }
       for (i = 0;i < desc.length; i++){
         desc[i].style.visibility = "hidden";
       }
@@ -88,6 +93,7 @@ function attaque_boom(numAttaque,puissance_Attaque) {
       actualiser_pokesauv();
       var vie = xhr.response;
       if (vie == 0){
+        suppr_poke_sauvage();
         alert("Pokemon KO");
         location.href = "profil.php";
       }
@@ -110,7 +116,51 @@ function actualiser_pokesauv() {
   });
   xhr.send();
 }
-
+function suppr_poke_sauvage() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', './PHP/ajax.php?suppr', true);
+  xhr.addEventListener('readystatechange', function(){
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+      location.href='profil.php';
+    }
+  });
+  xhr.send();
+}
+function changer_de_pokemon(numpokemon) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', './PHP/ajax.php?numpokemon='+numpokemon, true);
+  xhr.addEventListener('readystatechange', function(){
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+      actualiser_pokemoneq();
+      actualiser_pvpokemoneq();
+      document.querySelector("#divcommande").style.visibility = "visible";
+      document.querySelector("#pokemon").style.visibility = "hidden";
+    }
+  });
+  xhr.send();
+}
+function actualiser_pokemoneq(){
+  var xhr = new XMLHttpRequest();
+  var pokemoneq = document.getElementById("pokemoneq");
+  xhr.open('GET', './PHP/ajax.php?pokemoneq', true);
+  xhr.addEventListener('readystatechange', function(){
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+      pokemoneq.innerHTML = xhr.response;
+    }
+  });
+  xhr.send();
+}
+function actualiser_pvpokemoneq(){
+  var xhr = new XMLHttpRequest();
+  var pvpokeeq = document.getElementById("pvpokeeq");
+  xhr.open('GET', './PHP/ajax.php?pvpokeeq', true);
+  xhr.addEventListener('readystatechange', function(){
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+      pvpokeeq.innerHTML = xhr.response;
+    }
+  });
+  xhr.send();
+}
 attaque.onclick = function(){
   document.querySelector("#divcommande").style.visibility = "hidden";
   document.querySelector("#attaque").style.visibility = "visible";
@@ -144,7 +194,34 @@ butsoins.onclick = function(){
   document.querySelector(".retoursoins").style.visibility = "visible";
 }
 
-
+retouratt.onclick = function(){
+  document.querySelector("#attaque").style.visibility = "hidden";
+  document.querySelector("#divcommande").style.visibility = "visible";
+}
+retoursac.onclick = function(){
+  document.querySelector("#sac").style.visibility = "hidden";
+  document.querySelector("#divcommande").style.visibility = "visible";
+}
+retourball.onclick = function(){
+  document.querySelector("#ball").style.visibility = "hidden";
+  document.querySelector(".retourball").style.visibility = "hidden";
+  document.querySelector("#sac").style.visibility = "visible";
+  for (i = 0;i < allball.length; i++){
+    allball[i].style.visibility = "hidden";
+  }
+}
+retoursoins.onclick = function(){
+  document.querySelector("#soins").style.visibility = "hidden";
+  document.querySelector(".retoursoins").style.visibility = "hidden";
+  document.querySelector("#sac").style.visibility = "visible";
+  for (i = 0;i < allsoins.length; i++){
+    allsoins[i].style.visibility = "hidden";
+  }
+}
+retourpoke.onclick = function(){
+  document.querySelector("#pokemon").style.visibility = "hidden";
+  document.querySelector("#divcommande").style.visibility = "visible";
+}
 
 document.querySelector("#ball1").addEventListener("click", () => {
   for (i = 0;i < allball.length; i++){
@@ -334,34 +411,10 @@ document.querySelector("#soins20").addEventListener("click", () => {
 }
 );
 
-retouratt.onclick = function(){
-  document.querySelector("#attaque").style.visibility = "hidden";
-  document.querySelector("#divcommande").style.visibility = "visible";
-}
-retoursac.onclick = function(){
-  document.querySelector("#sac").style.visibility = "hidden";
-  document.querySelector("#divcommande").style.visibility = "visible";
-}
-retourball.onclick = function(){
-  document.querySelector("#ball").style.visibility = "hidden";
-  document.querySelector(".retourball").style.visibility = "hidden";
-  document.querySelector("#sac").style.visibility = "visible";
-  for (i = 0;i < allball.length; i++){
-    allball[i].style.visibility = "hidden";
-  }
-}
-retoursoins.onclick = function(){
-  document.querySelector("#soins").style.visibility = "hidden";
-  document.querySelector(".retoursoins").style.visibility = "hidden";
-  document.querySelector("#sac").style.visibility = "visible";
-  for (i = 0;i < allsoins.length; i++){
-    allsoins[i].style.visibility = "hidden";
-  }
-}
-retourpoke.onclick = function(){
-  document.querySelector("#pokemon").style.visibility = "hidden";
-  document.querySelector("#divcommande").style.visibility = "visible";
-}
+
+
+
+
 document.querySelector('.retourdescball1').onclick = function(){
   for (i = 0;i < allball.length; i++){
     allball[i].style.visibility = "visible";
@@ -523,9 +576,4 @@ document.querySelector('.retourdescsoins20').onclick = function(){
   }
   document.querySelector(".retoursoins").style.visibility = "visible";
   document.querySelector("#descsoins20").style.visibility = "hidden";
-}
-
-
-fuite.onclick = function(){
-  document.location.href='profil.php';
 }
